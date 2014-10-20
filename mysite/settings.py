@@ -10,6 +10,7 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
+
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -116,6 +117,9 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     PROJECT_PATH + '/templates/',
 )
+
+LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = 'base.html'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
