@@ -16,4 +16,13 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+
+
+    # debug code
+    url(r'^$', ViewHome.as_view(), name='feeds'),
+    url(r'^$', ViewHome.as_view(), name='articles'),
+    url(r'^$', ViewHome.as_view(), name='questions'),
+    url(r'^$', ViewHome.as_view(), name='network'),
+    url(r'^$', ViewHome.as_view(), name='search'),
+    url(r'^$', ViewHome.as_view(), name='profile'),
 )

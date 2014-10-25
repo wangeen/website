@@ -25,6 +25,17 @@ MEDIA_ROOT = COLLECT_ROOT + '/media/'
 MEDIA_URL = '/media/'
 STATIC_ROOT = COLLECT_ROOT +"/static"
 STATIC_URL = '/static/'
+# Additional locations of static files
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    PROJECT_ROOT+"/static",
+)
+
+
+
+
 TEMPLATE_DIRS = (
     PROJECT_ROOT + '/templates/',
 )
