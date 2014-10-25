@@ -7,5 +7,6 @@ from django.template import RequestContext
 class ViewHome(View):
     def get(self, request):
         # <view logic>
+        print "ViewHome"
         return render_to_response('index.html',  context_instance=RequestContext(request))
     pass

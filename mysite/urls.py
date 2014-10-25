@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from home.views import ViewHome
+from app_home.views import ViewHome
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin

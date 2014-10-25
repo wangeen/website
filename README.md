@@ -1,6 +1,5 @@
 website
 =======
-<<<<<<< HEAD
 speed up
 
 时间问题：如何管理license时间?
@@ -10,19 +9,13 @@ speed up
 免费试用先不给
 
 
-=======
->>>>>>> d70c44857c36225c4464e79cf0e21e93169d863c
+
 
 TODO List
 =======
 login 
-<<<<<<< HEAD
     (SN, password)
 register 这个功能先不给
-=======
-    (name, password)
-register 
->>>>>>> d70c44857c36225c4464e79cf0e21e93169d863c
     (name, email, password, verify by email)
 change password
     (old password, new password,new password again)
@@ -36,11 +29,7 @@ news
 user manual
 frequent questions
 download
-<<<<<<< HEAD
 contact us
-=======
-connect us
->>>>>>> d70c44857c36225c4464e79cf0e21e93169d863c
 edit
 purchase
 
