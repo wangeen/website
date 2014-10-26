@@ -42,5 +42,8 @@ TEMPLATE_DIRS = (
 
 
 LOGIN_URL = '/'
-LOGIN_REDIRECT_URL = 'base.html'
+LOGIN_REDIRECT_URL = '/edit'
+
+ALLOWED_SIGNUP_DOMAINS = ['*']
+
 
