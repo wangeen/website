@@ -4,6 +4,11 @@
 {% block title %}Home{% endblock %}
 
 {% block main %}
+<ol class="breadcrumb">
+    <li><a href="#">Edit</a></li>
+    <li><a href="#">2013</a></li>
+    <li class="active">November</li>
+</ol>
 
 <h2>Welcome to home page!</h3>
 <div class="row">
@@ -31,7 +36,7 @@
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-default">{% trans 'Log in' %}</button>
-                    <a href="{% url 'signup' %}" class="btn btn-link">{% trans 'Sign up for Bootcamp' %}</a>
+                    <a href="{% url 'password_reset' %}" class="btn btn-link">{% trans 'Forgot password' %}</a>
                 </div>
             </form>
         </div>

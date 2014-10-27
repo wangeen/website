@@ -5,7 +5,7 @@
   <link href="{{ STATIC_URL }}css/signup.css" rel="stylesheet">
 {% endblock head %}
 
-{% block body %}
+{% block main %}
   <h1 class="logo"><a href="{% url 'home' %}">Bootcamp</a></h1>
   <div class="signup">
     <h2>{% trans 'Sign up for Bootcamp' %}</h2>
@@ -26,4 +26,4 @@
       <button type="submit" class="btn btn-primary btn-lg">{% trans 'Create an account' %}</button>
     </form>
   </div>
-{% endblock body %}
+{% endblock %}
