@@ -8,7 +8,9 @@
     <title>{% block title %}Bootcamp{% endblock %}</title>
     <link rel="icon" type="image/png" href="{{ STATIC_URL }}img/favicon.png">
     <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+    {% comment %}
     <link href="{{ STATIC_URL }}css/bootcamp.css" rel="stylesheet">
+    {% endcomment %}
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -61,6 +63,8 @@
               {% endif %}
               <ul class="nav navbar-nav navbar-right">
                   <li>
+                  <button type="button" class="navnar-form btn btn-primary">Sign Up</button>
+                  <button type="button" class="btn btn-success">Sign In</button>
                   <a>{{ user.profile.get_screen_name }}</a>
                 </li>
                 <li class="dropdown">
@@ -90,9 +94,13 @@
           {% endblock main %}
         </div>
       </main>
+      {% comment %}
       <script src="{{ STATIC_URL }}js/notifications.js"></script>
       <script src="{{ STATIC_URL }}js/check_messages.js"></script>
+      {% endcomment %}
     {% endblock body %}
+      {% comment %}
     <script src="{{ STATIC_URL }}js/ga.js"></script>
+      {% endcomment %}
   </body>
 </html>

@@ -8,5 +8,7 @@ class home_view(View):
     def get(self, request):
         # <view logic>
         print "get home_view"
-        return render_to_response('index.html',  context_instance=RequestContext(request))
+        response_class_instance = render_to_response('index.html',  context_instance=RequestContext(request))
+        print "finish home_view"
+        return response_class_instance
     pass
