@@ -41,9 +41,26 @@ TEMPLATE_DIRS = (
 )
 
 
-LOGIN_URL = '/'
-LOGIN_REDIRECT_URL = '/edit'
+LOGIN_URL = '/my_restaurant'
+LOGIN_REDIRECT_URL = '/my_restaurant'
 
 ALLOWED_SIGNUP_DOMAINS = ['*']
+
+#set email info
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'wangeen1985@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = '5tgbHU*ik,'
+DEFAULT_FROM_EMAIL  = SERVER_EMAIL = 'wangeen1985@gmail.com'
+EMAIL_PORT = 587
+
+#EMAIL_USE_TLS = True
+#EMAIL_HOST = 'stmp.exmail.qq.com'
+#EMAIL_PORT = 465
+#EMAIL_HOST_USER = 'support@wangeen.com'
+#EMAIL_HOST_PASSWORD = '5rdxSW@'
+#DEFAULT_FROM_EMAIL  = SERVER_EMAIL = 'support@wangeen.com'
+## The next line is not required,  but may be useful.
+#SEND_BROKEN_LINK_EMAILS = True
 
 

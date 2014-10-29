@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from app_home.views import home_view
-from app_edit.views import edit_view
+from app_my_restaurant.views import my_restaurant_home
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -18,10 +18,10 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     # edit menu
-    url(r'^edit/$', edit_view.as_view(), name="edit"),
-    url(r'^edit/login$',  'django.contrib.auth.views.login', {'template_name':'index.html'}, name='login'),
-    url(r'^edit/logout$',  'django.contrib.auth.views.logout', {'next_page':'/'}, name='logout'),
-    url(r'^edit/signup$', 'app_auth.views.signup_view', name='signup'),
+    url(r'^my_restaurant/$', my_restaurant_home.as_view(), name="my_restaurant_home"),
+    url(r'^my_restaurant/login$',  'django.contrib.auth.views.login', {'template_name':'my_restaurant/my_restaurant_signin.html'}, name='login'),
+    url(r'^my_restaurant/logout$',  'django.contrib.auth.views.logout', {'next_page':'/'}, name='logout'),
+    url(r'^my_restaurant/signup$', 'app_auth.views.signup_view', name='signup'),
 
 
     (r'^resetpassword/passwordsent/$','django.contrib.auth.views.password_reset_done'),

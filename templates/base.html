@@ -48,7 +48,7 @@
                     <li><a href="{% url 'feeds' %}">{% trans 'eMenu' %}</a></li>
                     <li><a href="{% url 'articles' %}">{% trans 'Client' %}</a></li>
                     <li><a href="{% url 'articles' %}">{% trans 'Server' %}</a></li>
-                    <li><a href="{% url 'edit' %}">{% trans 'Edit' %}</a></li>
+                    <li><a href="{% url 'my_restaurant_home' %}">{% trans 'My Restaurant' %}</a></li>
                     <li><a href="{% url 'questions' %}">{% trans 'Q&A' %}</a></li>
                 </ul>
                 {% if not hide_search %}
@@ -66,7 +66,7 @@
                 <div class="navbar-form navbar-right">
                     <div class="form-group">
                     <button type="button"  onClick="location.href='{% url 'signup' %}'"  class="btn btn-success">Sign Up</button>
-                    <button type="button" onClick="location.href='{% url 'edit' %}'"   class="navnar-form btn btn-primary">Sign In</button>
+                    <button type="button" onClick="location.href='{% url 'my_restaurant_home' %}'"   class="navnar-form btn btn-primary">Sign In</button>
                     </div>
                 </div>
                 {% else %}
@@ -89,6 +89,8 @@
             <li class="active">November</li>
         </ol>
         <div class="container">
+            {% block breadcrumb %}
+            {% endblock breadcrumb %}
             {% block main %}
             {% endblock main %}
         </div>
