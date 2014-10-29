@@ -23,8 +23,11 @@ urlpatterns = patterns('',
     url(r'^edit/logout$',  'django.contrib.auth.views.logout', {'next_page':'/'}, name='logout'),
     url(r'^edit/signup$', 'app_auth.views.signup_view', name='signup'),
 
-    (r’^reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$’, ’django.contrib.auth.views.password_reset_confirm, name = 'password_reset'),
-    (r’^reset/done/$’, ’django.contrib.auth.views.password_reset_complete’),
+
+    (r'^resetpassword/passwordsent/$','django.contrib.auth.views.password_reset_done'),
+    (r'^resetpassword/$','django.contrib.auth.views.password_reset'),
+    (r'^reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$','django.contrib.auth.views.password_reset_confirm'),
+    (r'^reset/done/$','django.contrib.auth.views.password_reset_complete'),
 
     # debug code
     url(r'^$', home_view.as_view(), name='feeds'),
