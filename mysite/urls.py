@@ -23,6 +23,9 @@ urlpatterns = patterns('',
     url(r'^my_restaurant/logout$',  'django.contrib.auth.views.logout', {'next_page':'/'}, name='logout'),
     url(r'^my_restaurant/signup$', 'app_auth.views.signup_view', name='signup'),
 
+    url(r'^my_restaurant/info$', my_restaurant_info.as_view(), name="my_restaurant_info"),
+    url(r'^my_restaurant/menu$', my_restaurant_menu.as_view(), name="my_restaurant_menu"),
+    url(r'^my_restaurant/desk$', my_restaurant_desk.as_view(), name="my_restaurant_desk"),
 
     (r'^resetpassword/passwordsent/$','django.contrib.auth.views.password_reset_done'),
     (r'^resetpassword/$','django.contrib.auth.views.password_reset'),

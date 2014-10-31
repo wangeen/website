@@ -4,12 +4,24 @@
 
 
 {% block main %}
-<p> nav for info, menu, desk</p>
+<p>Please add restaurant information, menu and desk</p>
 
 <div class="row">
     <div class="col-md-2">
-        <nav>
+        <nav class="navbar navbar-default navbar-left" role="navigation">
+        <ul class="navbar-form">
+            <li><a href="{% url 'feeds' %}">{% trans 'Info' %}</a></li>
+            <li><a href="{% url 'articles' %}">{% trans 'Menu' %}</a></li>
+            <li><a href="{% url 'articles' %}">{% trans 'Desk' %}</a></li>
+        </ul>
         </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-7">
+        {% block my_restaurant_base %}
+        {% endblock my_restaurant_base  %}
     </div>
 </div>
 

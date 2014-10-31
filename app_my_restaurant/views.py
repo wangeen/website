@@ -16,3 +16,41 @@ class my_restaurant_home(View):
             #return render(request, 'my_restaurant/my_restaurant_edit_info.html')
             return render_to_response('my_restaurant/my_restaurant_edit_info.html',  context_instance=RequestContext(request))
     pass
+
+
+class my_restaurant_info(View):
+    def get(self, request):
+        if request.user.is_authenticated() is False:
+            print "is_authenticated false"
+            return render_to_response('my_restaurant/my_restaurant_signin.html',  context_instance=RequestContext(request))
+        else:
+            print "is_authenticated true"
+            #return render(request, 'my_restaurant/my_restaurant_edit_info.html')
+            return render_to_response('my_restaurant/my_restaurant_edit_info.html',  context_instance=RequestContext(request))
+    pass
+
+class my_restaurant_home(View):
+    def get(self, request):
+        if request.user.is_authenticated() is False:
+            #return render(request, 'my_restaurant/my_restaurant_login.html')
+            print "is_authenticated false"
+            return render_to_response('my_restaurant/my_restaurant_signin.html',  context_instance=RequestContext(request))
+        else:
+            print "is_authenticated true"
+            #return render(request, 'my_restaurant/my_restaurant_edit_info.html')
+            return render_to_response('my_restaurant/my_restaurant_edit_info.html',  context_instance=RequestContext(request))
+    pass
+
+
+
+class my_restaurant_home(View):
+    def get(self, request):
+        if request.user.is_authenticated() is False:
+            #return render(request, 'my_restaurant/my_restaurant_login.html')
+            print "is_authenticated false"
+            return render_to_response('my_restaurant/my_restaurant_signin.html',  context_instance=RequestContext(request))
+        else:
+            print "is_authenticated true"
+            #return render(request, 'my_restaurant/my_restaurant_edit_info.html')
+            return render_to_response('my_restaurant/my_restaurant_edit_info.html',  context_instance=RequestContext(request))
+    pass

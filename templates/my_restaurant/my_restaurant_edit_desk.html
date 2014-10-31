@@ -1,47 +1,13 @@
-{% extends "base.html" %}
+{% extends "my_restaurant/my_restaurant_edit_base.html" %}
 {% load i18n %}
 
-{% block title %}Home{% endblock %}
-
-{% block main %}
+{% block breadcrumb %}
 <ol class="breadcrumb">
-    <li><a href="#">Edit</a></li>
-    <li><a href="#">2013</a></li>
-    <li class="active">November</li>
+    <li><a href="#">My Restaurant</a></li>
+    <li class="active">Restaurant Info</li>
 </ol>
+{% endblock breadcrumb %}
 
-<h2>Welcome to home page!</h3>
-<div class="row">
-    <div class="col-md-9">
-        <p>comming soon</p>
-    </div>
-    <div class="col-md-3">
-        <div class="login">
-            <h2>{% trans 'Log in' %}</h2>
-            <form method="post" action="{% url 'login' %}" role="form">
-                {% csrf_token %}
-                <div class="form-group{% if form.username.errors %} has-error{% endif %}">
-                    <label for="username">{% trans 'Username' %}</label>
-                    <input type="text" class="form-control" id="username" name="username">
-                    {% for error in form.username.errors %}
-                    <label class="control-label">{{ error }}</label>
-                    {% endfor %}
-                </div>
-                <div class="form-group{% if form.password.errors %} has-error{% endif %}">
-                    <label for="password">{% trans 'Password' %}</label>
-                    <input type="password" class="form-control" id="password" name="password">
-                    {% for error in form.password.errors %}
-                    <label class="control-label">{{ error }}</label>
-                    {% endfor %}
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-default">{% trans 'Log in' %}</button>
-                    <a href="/resetpassword/" class="btn btn-link">{% trans 'Forgot password' %}</a>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-
-{% endblock %}
+{% block my_restaurant_base %}
+    <p> restaurant desk </p>
+{% endblock my_restaurant_base%}
