@@ -8,17 +8,14 @@
 
 <div class="row">
     <div class="col-md-2">
-        <nav class="navbar navbar-default navbar-left" role="navigation">
-        <ul class="navbar-form">
-            <li><a href="{% url 'feeds' %}">{% trans 'Info' %}</a></li>
-            <li><a href="{% url 'articles' %}">{% trans 'Menu' %}</a></li>
-            <li><a href="{% url 'articles' %}">{% trans 'Desk' %}</a></li>
+        <nav class="navbar navbar-default" role="navigation"> 
+        <ul class="nav navbar-tabs nav-stacked text-center">
+            <li><a href="{% url 'my_restaurant_info' %}">{% trans 'Info' %}</a></li>
+            <li><a href="{% url 'my_restaurant_menu' %}">{% trans 'Menu' %}</a></li>
+            <li><a href="{% url 'my_restaurant_desk' %}">{% trans 'Desk' %}</a></li>
         </ul>
         </nav>
     </div>
-</div>
-
-<div class="row">
     <div class="col-md-7">
         {% block my_restaurant_base %}
         {% endblock my_restaurant_base  %}
