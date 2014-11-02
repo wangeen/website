@@ -54,7 +54,6 @@ def my_restaurant_update_name(request):
         obj, created = my_restaurant_info_model.objects.get_or_create(user=request.user)
         print obj
         name = obj.restaurant_name
-        print "xxxxxx",name, created
 #product = Product.objects.get(name='Venezuelan Beaver Cheese')
 #product.number_sold = 4
 #product.save(update_fields=["active"] )
