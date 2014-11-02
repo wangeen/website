@@ -16,15 +16,15 @@
     </div>
     <div class="panel-body">
         <label class="label label-info" for="show_name_editor">{% trans 'Restaurant Name:' %}</label>
-        <p>not set</p>
+        <p>{{ current_name }}</p>
         <button type="button" id="show_name_editor" class="btn btn-primary">{% trans 'Edit' %}</button>
 
         <!-- restaurant name editor form -->
         <div id="name_editor" class="well">
-            <form role="form">
+            <form method="post" role="form" action="{% url 'my_restaurant_update_name' %} ">
+                {% csrf_token %}
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                    {{ name_form.as_p }}
                     <button type="button" id="hide_name_editor" class="btn btn-default">Close</button>
                     <button type="submit" class="btn btn-primary">Save Changes</button>
                 </div>
@@ -32,17 +32,6 @@
         </div>
 </div>
 
-
-<p> restaurant info  </p>
-
-<form method="post" action="{% url 'login' %}" role="form">
-    {% csrf_token %}
-    <div class="form-group{% if form.username.errors %} has-error{% endif %}">
-        <label for="username">{% trans 'Restaurant Name: Not Set' %}</label>
-        <button type="submit" class="btn btn-danger">{% trans 'Edit' %}</button>
-        <input type="text" class="form-control" id="username" name="username">
-    </div>
-</form>
 
 <script>
     $(document).ready(function(){
