@@ -21,11 +21,11 @@ class my_restaurant_home(View):
 @login_required
 def my_restaurant_info(request):
     obj, created = my_restaurant_info_model.objects.get_or_create(user=request.user)
-    name = obj.restaurant_name
-    form = restaurant_name_form(initial={'restaurant_name': name})
+    form = restaurant_name_form(initial={'restaurant_name': obj.restaurant_name,
+                                         'restaurant_description': obj.restaurant_description
+                                         })
     return render(request,'my_restaurant/my_restaurant_edit_info.html',{
-        'name_form':form,
-        'current_name':name
+        'name_form':form
     })
 
 @login_required
@@ -44,22 +44,15 @@ def my_restaurant_update_name(request):
         print request.user
         if form.is_valid():
             obj, created = my_restaurant_info_model.objects.get_or_create(user=request.user)
-            name = form.cleaned_data["restaurant_name"]
-            obj.restaurant_name = name
-            obj.save(update_fields=["restaurant_name"] )
+            obj.restaurant_name = form.cleaned_data["restaurant_name"]
+            obj.restaurant_description = form.cleaned_data["restaurant_description"]
+            #obj.save(update_fields=["restaurant_name"] )
+            obj.save()
             pass
         pass
     else:
         form = restaurant_name_form()
-        obj, created = my_restaurant_info_model.objects.get_or_create(user=request.user)
-        print obj
-        name = obj.restaurant_name
-#product = Product.objects.get(name='Venezuelan Beaver Cheese')
-#product.number_sold = 4
-#product.save(update_fields=["active"] )
-#
-#        form = my_restaurant_info_form()
-#        pass
     return render(request,'my_restaurant/my_restaurant_edit_info.html',{
-        'name_form':form
+        'name_form':form,
+        'save_success':True
     })
