@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 # Create your models here.
 class my_restaurant_info_model(models.Model):
     user = models.OneToOneField(User)
-    restaurant_name = models.CharField(max_length=100, default="Here Your Restaurant Name")
-    restaurant_description = models.TextField(default="Here Your Restaurant Desciption")
+    restaurant_name = models.CharField(max_length=100, default="")
+    restaurant_description = models.TextField(default="")
     pass
 
 
