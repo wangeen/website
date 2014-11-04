@@ -1,5 +1,7 @@
 {% extends "my_restaurant/my_restaurant_edit_base.html" %}
 {% load i18n %}
+{% load render_table from django_tables2 %}
+{% load mytags %}
 
 {% block breadcrumb %}
 <ol class="breadcrumb">
@@ -15,4 +17,67 @@
     <p> add desk </p>
     <p> update desk </p>
     <p> delete desk </p>
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">Restaurant Desk</h3>
+    </div>
+    <div class="panel-body">
+        <button type="button" class="btn btn-primary" id="show_desk_editor">Add Desk</button>
+        <!-- restaurant desk add form -->
+        <div id="add_desk_editor" class="well">
+            {% if return_status|is_false %}
+            <form method="post" role="form" action="{% url 'my_restaurant_add_desk' %} ">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ add_desk_form.as_p }}
+                    <button type="submit" class="btn btn-primary" id="hide_desk_editor">Save Changes</button>
+                </div>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% render_table people %}
+
+<p> restaurant desk </p>
+<table class="table table-striped">
+    <caption>Striped Table Layout</caption>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>Pincode</th>
+        </tr>
+    </thead>
+    <tbody> <tr>
+            <td>Tanmay</td>
+            <td>Bangalore</td>
+            <td>560001</td>
+            </tr> <tr>
+            <td>Sachin</td>
+            <td>Mumbai</td>
+            <td>400003</td>
+            </tr> <tr>
+            <td>Uma</td>
+            <td>Pune</td>
+            <td>411027</td>
+        </tr>
+    </tbody>
+</table>
+<script>
+    $(document).ready(function(){
+        $("#show_desk_editor").click(function(){
+            // $(this).hide();
+            $("#add_desk_editor").toggle()
+        });
+    });
+</script>
+
+
 {% endblock my_restaurant_base%}
