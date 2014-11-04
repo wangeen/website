@@ -83,6 +83,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
+    'mysite',
     'django.contrib.admindocs',
     'app_home',
     'app_my_restaurant',

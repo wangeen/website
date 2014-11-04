@@ -33,7 +33,7 @@ urlpatterns = patterns('',
     url(r'^my_restaurant/desk$', my_restaurant_desk, name="my_restaurant_desk"),
 
     url(r'^my_restaurant/info/name_update$', my_restaurant_update_name, name="my_restaurant_update_name"),
-    url(r'^my_restaurant/info/add_desk$', my_restaurant_add_desk, name="my_restaurant_add_desk"),
+    url(r'^my_restaurant/desk/add_desk$', my_restaurant_add_desk, name="my_restaurant_add_desk"),
 
     (r'^resetpassword/passwordsent/$','django.contrib.auth.views.password_reset_done'),
     (r'^resetpassword/$','django.contrib.auth.views.password_reset'),

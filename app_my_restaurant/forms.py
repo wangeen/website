@@ -20,7 +20,7 @@ class restaurant_add_desk_form(forms.Form):
                                       widget=forms.TextInput(attrs={'placeholder': 'Person Count',
                                                                     'class': 'form-control'
                                                                    }))
-    desk_description = forms.CharField(max_length=100,
+    desk_description = forms.CharField(max_length=100, required =False,
                                       widget=forms.TextInput(attrs={'placeholder': 'Desk description',
                                                                     'class': 'form-control'
                                                                    }))

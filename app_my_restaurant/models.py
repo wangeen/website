@@ -12,7 +12,7 @@ class my_restaurant_info_model(models.Model):
 class my_restaurant_desk_model(models.Model):
     user = models.ForeignKey(User)
     desk_name = models.CharField(max_length=100, default="")
-    desk_person_count = models.IntegerField(default="2")
+    desk_person_count = models.PositiveIntegerField(default="2")
     desk_description = models.CharField(max_length=100, default="")
     pass
 
@@ -26,7 +26,3 @@ class my_restaurant_info_form(ModelForm):
     class Meta:
         model = my_restaurant_info_model
     pass
-
-# tutorial/models.py
-class Person(models.Model):
-    name = models.CharField(max_length = 100,verbose_name="full name")

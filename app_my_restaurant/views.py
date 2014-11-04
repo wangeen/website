@@ -7,7 +7,7 @@ from django.template import RequestContext
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from app_my_restaurant.models import my_restaurant_info_model
-from app_my_restaurant.models import Person
+from app_my_restaurant.models import my_restaurant_desk_model
 from app_my_restaurant.forms import restaurant_name_form
 from app_my_restaurant.forms import restaurant_add_desk_form
 
@@ -59,7 +59,7 @@ def my_restaurant_update_name(request):
 def my_restaurant_add_desk(request):
     status = False
     if request.method == 'POST':
-        form = restaurant_name_form(request.POST)
+        form = restaurant_add_desk_form(request.POST)
         print request.user
         if form.is_valid():
             obj, created = my_restaurant_desk_model.objects.get_or_create(user=request.user)
@@ -75,18 +75,21 @@ def my_restaurant_add_desk(request):
             pass
     else:
         status = False
-        form = restaurant_name_form()
+        form = restaurant_add_desk_form()
     return render(request,'my_restaurant/my_restaurant_edit_desk.html',{
         'add_desk_form':form,
+        "desk_table": my_restaurant_desk_model.objects.all(),
         'return_status':status
     })
 
+# desk edit home page
 @login_required
 def my_restaurant_desk(request):
     form = restaurant_add_desk_form()
     return render(request,
                   "my_restaurant/my_restaurant_edit_desk.html",
                   {
-                      "people": Person.objects.all(),
-                      "add_desk_form": form
+                      "desk_table": my_restaurant_desk_model.objects.all(),
+                      "add_desk_form": form,
+                      'return_status':True # default hide
                   })

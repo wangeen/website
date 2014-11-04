@@ -3,6 +3,10 @@
 {% load render_table from django_tables2 %}
 {% load mytags %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ STATIC_URL }}django_tables2/themes/paleblue/css/screen.css" />
+{% endblock head %}
+
 {% block breadcrumb %}
 <ol class="breadcrumb">
     <li><a href="#">My Restaurant</a></li>
@@ -23,10 +27,13 @@
         <h3 class="panel-title">Restaurant Desk</h3>
     </div>
     <div class="panel-body">
-        <button type="button" class="btn btn-primary" id="show_desk_editor">Add Desk</button>
+        <button type="button" class="btn btn-primary" id="show_desk_editor">Add New Desk</button>
         <!-- restaurant desk add form -->
+        {% if return_status|is_false %}
         <div id="add_desk_editor" class="well">
-            {% if return_status|is_false %}
+        {% else %}
+        <div id="add_desk_editor" style="display: none;" class="well">
+        {% endif %}
             <form method="post" role="form" action="{% url 'my_restaurant_add_desk' %} ">
                 {% csrf_token %}
                 <div class="form-group">
@@ -34,16 +41,14 @@
                     <button type="submit" class="btn btn-primary" id="hide_desk_editor">Save Changes</button>
                 </div>
             </form>
-            {% endif %}
         </div>
     </div>
+    {% render_table desk_table%}
 </div>
 
 
-
-
-
-{% render_table people %}
+{% comment %}
+{% endcomment %}
 
 <p> restaurant desk </p>
 <table class="table table-striped">
