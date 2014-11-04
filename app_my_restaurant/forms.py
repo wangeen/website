@@ -10,3 +10,21 @@ class restaurant_name_form(forms.Form):
                                                                     'class': 'form-control'
                                                                          }))
     pass
+
+class restaurant_add_desk_form(forms.Form):
+    desk_name = forms.CharField(max_length=100,
+                                      widget=forms.TextInput(attrs={'placeholder': 'Desk Name',
+                                                                    'class': 'form-control'
+                                                                   }))
+    desk_person_count = forms.IntegerField(
+                                      widget=forms.TextInput(attrs={'placeholder': 'Person Count',
+                                                                    'class': 'form-control'
+                                                                   }))
+    desk_description = forms.CharField(max_length=100,
+                                      widget=forms.TextInput(attrs={'placeholder': 'Desk description',
+                                                                    'class': 'form-control'
+                                                                   }))
+
+
+    pass
+

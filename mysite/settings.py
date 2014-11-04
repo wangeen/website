@@ -54,7 +54,7 @@ SECRET_KEY = 'f7=ft1cv8(4#46eg(6qoo8g-cx_lxlu02a(_$rmno7o^j-jo9j'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -87,6 +87,7 @@ INSTALLED_APPS = (
     'app_home',
     'app_my_restaurant',
     'app_auth',
+    'django_tables2',
 )
 
 # A sample logging configuration. The only tangible logging

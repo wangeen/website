@@ -7,6 +7,7 @@ from django.template import RequestContext
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from app_my_restaurant.models import my_restaurant_info_model
+from app_my_restaurant.models import Person
 
 class my_restaurant_home(View):
     def get(self, request):
@@ -34,7 +35,9 @@ def my_restaurant_menu(request):
 
 @login_required
 def my_restaurant_desk(request):
-    return render_to_response('my_restaurant/my_restaurant_edit_desk.html',  context_instance=RequestContext(request))
+    return render(request,
+                  "my_restaurant/my_restaurant_edit_desk.html",
+                  {"people": Person.objects.all()})
 
 from app_my_restaurant.forms import restaurant_name_form
 @login_required
@@ -56,3 +59,5 @@ def my_restaurant_update_name(request):
         'name_form':form,
         'save_success':True
     })
+
+
