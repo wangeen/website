@@ -10,6 +10,8 @@ from app_my_restaurant.models import my_restaurant_info_model
 from app_my_restaurant.models import my_restaurant_desk_model
 from app_my_restaurant.forms import restaurant_name_form
 from app_my_restaurant.forms import restaurant_add_desk_form
+from django_tables2   import RequestConfig
+from app_my_restaurant.tables import desk_table
 
 class my_restaurant_home(View):
     def get(self, request):
@@ -82,14 +84,19 @@ def my_restaurant_add_desk(request):
         'return_status':status
     })
 
+
+
 # desk edit home page
 @login_required
 def my_restaurant_desk(request):
     form = restaurant_add_desk_form()
+    table = desk_table(my_restaurant_desk_model.objects.all())
+    # This enables data ordering and pagination.
+    RequestConfig(request).configure(table)
     return render(request,
                   "my_restaurant/my_restaurant_edit_desk.html",
                   {
-                      "desk_table": my_restaurant_desk_model.objects.all(),
+                      "desk_table": table,
                       "add_desk_form": form,
                       'return_status':True # default hide
                   })
