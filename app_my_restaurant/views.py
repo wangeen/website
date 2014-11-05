@@ -59,6 +59,24 @@ def my_restaurant_update_name(request):
     })
 
 @login_required
+def my_restaurant_remove_desk(request):
+    if request.method == 'POST':
+        pass
+    else:
+        pass
+    # This enables data ordering and pagination.
+    table = desk_table(my_restaurant_desk_model.objects.all())
+    RequestConfig(request, paginate={"per_page": 5} ).configure(table)
+    return render(request,'my_restaurant/my_restaurant_edit_desk.html',{
+        'add_desk_form':form,
+        "desk_table": table,
+        'return_status':status
+    })
+
+
+
+
+@login_required
 def my_restaurant_add_desk(request):
     status = False
     if request.method == 'POST':
@@ -84,7 +102,7 @@ def my_restaurant_add_desk(request):
         form = restaurant_add_desk_form()
     # This enables data ordering and pagination.
     table = desk_table(my_restaurant_desk_model.objects.all())
-    RequestConfig(request).configure(table)
+    RequestConfig(request, paginate={"per_page": 5} ).configure(table)
     return render(request,'my_restaurant/my_restaurant_edit_desk.html',{
         'add_desk_form':form,
         "desk_table": table,
@@ -99,7 +117,7 @@ def my_restaurant_desk(request):
     form = restaurant_add_desk_form()
     # This enables data ordering and pagination.
     table = desk_table(my_restaurant_desk_model.objects.all())
-    RequestConfig(request).configure(table)
+    RequestConfig(request, paginate={"per_page": 5}).configure(table)
     return render(request,
                   "my_restaurant/my_restaurant_edit_desk.html",
                   {
