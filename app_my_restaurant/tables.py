@@ -2,9 +2,11 @@ import django_tables2 as tables
 import itertools
 from app_my_restaurant.models import my_restaurant_desk_model
 
+# td contenteditable='true'
+
 TEMPLATE = '''
-    <a href="{% url  %}" class="tbl_icon edit">Edit</a>
-    <a href="" class="tbl_icon delete">Delete</a>
+    <a href="" class="tbl_icon edit">Edit</a>
+    <a href="{% url 'my_restaurant_remove_desk' desk_id=record.pk %}" class="tbl_icon delete">Delete</a>
 '''
 
 class desk_table(tables.Table):

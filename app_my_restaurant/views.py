@@ -59,19 +59,10 @@ def my_restaurant_update_name(request):
     })
 
 @login_required
-def my_restaurant_remove_desk(request):
-    if request.method == 'POST':
-        pass
-    else:
-        pass
-    # This enables data ordering and pagination.
-    table = desk_table(my_restaurant_desk_model.objects.all())
-    RequestConfig(request, paginate={"per_page": 5} ).configure(table)
-    return render(request,'my_restaurant/my_restaurant_edit_desk.html',{
-        'add_desk_form':form,
-        "desk_table": table,
-        'return_status':status
-    })
+def my_restaurant_remove_desk(request,desk_id):
+    print "xxxxx",desk_id
+    my_restaurant_desk_model.objects.filter(id=desk_id).delete()
+    return my_restaurant_desk(request)
 
 
 
