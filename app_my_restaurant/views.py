@@ -12,6 +12,7 @@ from app_my_restaurant.forms import restaurant_name_form
 from app_my_restaurant.forms import restaurant_add_desk_form
 from django_tables2   import RequestConfig
 from app_my_restaurant.tables import desk_table
+from django.forms.util import ErrorList
 
 class my_restaurant_home(View):
     def get(self, request):
@@ -64,13 +65,16 @@ def my_restaurant_add_desk(request):
         form = restaurant_add_desk_form(request.POST)
         print request.user
         if form.is_valid():
-            obj, created = my_restaurant_desk_model.objects.get_or_create(user=request.user)
-            obj.desk_name = form.cleaned_data["desk_name"]
-            obj.desk_person_count = form.cleaned_data["desk_person_count"]
-            obj.desk_description = form.cleaned_data["desk_description"]
-            #obj.save(update_fields=["restaurant_name"] )
-            obj.save()
-            status = True
+            try:
+                p = my_restaurant_desk_model.objects.create(user=request.user,
+                                                                   desk_name = form.cleaned_data["desk_name"],
+                                                                   desk_person_count = form.cleaned_data["desk_person_count"],
+                                                                   desk_description = form.cleaned_data["desk_description"]
+                                                                   )
+                status = True
+            except:
+                status = False
+                form._errors["desk_name"] = ErrorList([u"Error, the same desk already exist!"])
             pass
         else:
             status = False
@@ -78,9 +82,12 @@ def my_restaurant_add_desk(request):
     else:
         status = False
         form = restaurant_add_desk_form()
+    # This enables data ordering and pagination.
+    table = desk_table(my_restaurant_desk_model.objects.all())
+    RequestConfig(request).configure(table)
     return render(request,'my_restaurant/my_restaurant_edit_desk.html',{
         'add_desk_form':form,
-        "desk_table": my_restaurant_desk_model.objects.all(),
+        "desk_table": table,
         'return_status':status
     })
 
@@ -90,8 +97,8 @@ def my_restaurant_add_desk(request):
 @login_required
 def my_restaurant_desk(request):
     form = restaurant_add_desk_form()
-    table = desk_table(my_restaurant_desk_model.objects.all())
     # This enables data ordering and pagination.
+    table = desk_table(my_restaurant_desk_model.objects.all())
     RequestConfig(request).configure(table)
     return render(request,
                   "my_restaurant/my_restaurant_edit_desk.html",
