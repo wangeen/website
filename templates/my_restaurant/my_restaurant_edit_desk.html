@@ -15,74 +15,114 @@
 {% endblock breadcrumb %}
 
 {% block my_restaurant_base %}
-    <p> restaurant desk </p>
-    <p> function list: </p>
-    <p> display desk </p>
-    <p> add desk </p>
-    <p> update desk </p>
-    <p> delete desk </p>
+<p> restaurant desk </p>
+<p> function list: </p>
+<p> display desk </p>
+<p> add desk </p>
+<p> update desk </p>
+<p> delete desk </p>
 
-<div class="panel panel-info">
-    <div class="panel-heading">
-        <h3 class="panel-title">Restaurant Desk</h3>
-    </div>
-    <div class="panel-body">
-        <button type="button" class="btn btn-primary" id="show_desk_editor">Add New Desk</button>
-        <!-- restaurant desk add form -->
-        {% if return_status|is_false %}
-        <div id="add_desk_editor" class="well">
-        {% else %}
-        <div id="add_desk_editor" style="display: none;" class="well">
-        {% endif %}
+<!-- desk info model dialog -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
             <form method="post" role="form" action="{% url 'my_restaurant_add_desk' %} ">
                 {% csrf_token %}
-                <div class="form-group">
-                    {{ add_desk_form.as_p }}
-                    <button type="submit" class="btn btn-primary" id="hide_desk_editor">Save Changes</button>
-                </div>
+
+            <div class="modal-header">
+                <button type="button" class="close"
+                    data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Desk Detail
+                </h4> 
+            </div>
+            <div class="modal-body">
+                {{ add_desk_form.as_p }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                    data-dismiss="modal">Close
+                </button>
+                <button type="submit" class="btn btn-primary">
+                    Submit changes
+                </button>
+            </div>
+
             </form>
-        </div>
-    </div>
-    {% render_table desk_table%}
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
 </div>
 
 
-{% comment %}
-{% endcomment %}
-
-<p> restaurant desk </p>
-<table class="table table-striped">
-    <caption>Striped Table Layout</caption>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>City</th>
-            <th>Pincode</th>
-        </tr>
-    </thead>
-    <tbody> <tr>
-            <td>Tanmay</td>
-            <td>Bangalore</td>
-            <td>560001</td>
-            </tr> <tr>
-            <td>Sachin</td>
-            <td>Mumbai</td>
-            <td>400003</td>
-            </tr> <tr>
-            <td>Uma</td>
-            <td>Pune</td>
-            <td>411027</td>
-        </tr>
-    </tbody>
-</table>
-<script>
-    $(document).ready(function(){
-        $("#show_desk_editor").click(function(){
-            // $(this).hide();
-            $("#add_desk_editor").toggle()
-        });
-    });
-</script>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Restaurant Desk</h3>
+        </div>
+        <div class="panel-body">
+            <button type="button" class="btn btn-primary" data-toggle="modal"
+                data-target="#myModal" id="show_desk_editor">Add New Desk</button>
+            <!-- restaurant desk add form -->
+            {% if return_status|is_false %}
+                <div id="add_desk_editor" class="well">
+            {% else %}
+                <div id="add_desk_editor" style="display: none;" class="well">
+            {% endif %}
+                    <form method="post" role="form" action="{% url 'my_restaurant_add_desk' %} ">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ add_desk_form.as_p }}
+                            <button type="submit" class="btn btn-primary" id="hide_desk_editor">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% render_table desk_table%}
+        </div>
 
 
-{% endblock my_restaurant_base%}
+        {% comment %}
+        {% endcomment %}
+
+        <p> restaurant desk </p>
+        <table class="table table-striped">
+            <caption>Striped Table Layout</caption>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Pincode</th>
+                </tr>
+            </thead>
+            <tbody> <tr>
+                    <td>Tanmay</td>
+                    <td>Bangalore</td>
+                    <td>560001</td>
+                    </tr> <tr>
+                    <td>Sachin</td>
+                    <td>Mumbai</td>
+                    <td>400003</td>
+                    </tr> <tr>
+                    <td>Uma</td>
+                    <td>Pune</td>
+                    <td>411027</td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            $(document).ready(function(){
+                $("#show_desk_editor").click(function(){
+                    // $(this).hide();
+                    $("#add_desk_editor").toggle()
+                });
+            });
+            $(function () { $('#myModal').modal({
+                    keyboard: true
+            })});
+        </script>
+
+
+        {% endblock my_restaurant_base%}
