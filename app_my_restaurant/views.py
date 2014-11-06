@@ -13,6 +13,7 @@ from app_my_restaurant.forms import restaurant_add_desk_form
 from django_tables2   import RequestConfig
 from app_my_restaurant.tables import desk_table
 from django.forms.util import ErrorList
+from django.db import connection
 
 class my_restaurant_home(View):
     def get(self, request):
@@ -80,6 +81,8 @@ def my_restaurant_add_desk(request):
                                                                    desk_person_count = form.cleaned_data["desk_person_count"],
                                                                    desk_description = form.cleaned_data["desk_description"]
                                                                    )
+
+                print "add desk",p.query
                 status = True
             except:
                 status = False
@@ -107,7 +110,9 @@ def my_restaurant_add_desk(request):
 def my_restaurant_desk(request):
     form = restaurant_add_desk_form()
     # This enables data ordering and pagination.
-    table = desk_table(my_restaurant_desk_model.objects.all())
+    my_query = my_restaurant_desk_model.objects.filter(user=request.user)
+    print 'sql', my_query.query
+    table = desk_table(my_query)
     RequestConfig(request, paginate={"per_page": 5}).configure(table)
     return render(request,
                   "my_restaurant/my_restaurant_edit_desk.html",

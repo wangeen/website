@@ -2,6 +2,12 @@ from django.db import models
 from django.forms import ModelForm
 from django.contrib.auth.models import User
 
+#class my_manager(models.Manager):
+#    def get_query_set(self):
+#        default_queryset = super(my_manager, self).get_query_set()
+#        return default_queryset.filter(user=)
+
+
 # Create your models here.
 class my_restaurant_info_model(models.Model):
     user = models.OneToOneField(User)
