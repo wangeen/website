@@ -15,16 +15,8 @@
 {% endblock breadcrumb %}
 
 {% block my_restaurant_base %}
-<p> restaurant desk </p>
-<p> function list: </p>
-<p> display desk </p>
-<p> add desk </p>
-<p> update desk </p>
-<p> delete desk </p>
-
 <!-- desk info model dialog -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -64,6 +56,8 @@
         <div class="panel-body">
             <button type="button" class="btn btn-primary" data-toggle="modal"
                 data-target="#myModal" id="show_desk_editor">Add New Desk</button>
+            {% comment %}
+            <!--
             <!-- restaurant desk add form -->
             {% if return_status|is_false %}
                 <div id="add_desk_editor" class="well">
@@ -78,49 +72,34 @@
                         </div>
                     </form>
                 </div>
+                -->
+                {% endcomment %}
             </div>
             {% render_table desk_table%}
         </div>
 
-
-        {% comment %}
-        {% endcomment %}
-
-        <p> restaurant desk </p>
-        <table class="table table-striped">
-            <caption>Striped Table Layout</caption>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>City</th>
-                    <th>Pincode</th>
-                </tr>
-            </thead>
-            <tbody> <tr>
-                    <td>Tanmay</td>
-                    <td>Bangalore</td>
-                    <td>560001</td>
-                    </tr> <tr>
-                    <td>Sachin</td>
-                    <td>Mumbai</td>
-                    <td>400003</td>
-                    </tr> <tr>
-                    <td>Uma</td>
-                    <td>Pune</td>
-                    <td>411027</td>
-                </tr>
-            </tbody>
-        </table>
         <script>
             $(document).ready(function(){
+                var status = "{{ return_status }}";
+                // alert(typeof status);
+                // alert(status);
+
+                // show desk detail dialog if error input
+                if(status==="False"){
+                    $('#myModal').modal('show');
+                }else{
+                    $('#myModal').modal('hide');
+                }
+
                 //$("#show_desk_editor").click(function(){
                 //    // $(this).hide();
                 //    $("#add_desk_editor").toggle()
                 //});
             });
-            $(function () { $('#myModal').modal({
-                    keyboard: true
-            })});
+            // bug here, the model dialog will init show, it's bad, so comment out
+            //$(function () { $('#myModal').modal({
+            //        keyboard: true
+            //})});
         </script>
 
 

@@ -16,7 +16,7 @@
     </div>
     <div class="panel-body">
         <!-- restaurant name editor form -->
-        <div id="name_editor" class="well">
+        <div id="name_editor" >
             <form method="post" role="form" action="{% url 'my_restaurant_update_name' %} ">
                 {% csrf_token %}
                 <div class="form-group">

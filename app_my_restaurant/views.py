@@ -82,7 +82,7 @@ def my_restaurant_add_desk(request):
                                                                    desk_description = form.cleaned_data["desk_description"]
                                                                    )
 
-                print "add desk",p.query
+                print "add desk"
                 status = True
             except:
                 status = False
@@ -92,10 +92,11 @@ def my_restaurant_add_desk(request):
             status = False
             pass
     else:
-        status = False
+        status = True
         form = restaurant_add_desk_form()
     # This enables data ordering and pagination.
-    table = desk_table(my_restaurant_desk_model.objects.all())
+    my_query = my_restaurant_desk_model.objects.filter(user=request.user)
+    table = desk_table(my_query)
     RequestConfig(request, paginate={"per_page": 5} ).configure(table)
     return render(request,'my_restaurant/my_restaurant_edit_desk.html',{
         'add_desk_form':form,
