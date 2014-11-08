@@ -5,7 +5,9 @@ from app_my_restaurant.models import my_restaurant_desk_model
 # td contenteditable='true'
 
 TEMPLATE = '''
-    <a href="" class="tbl_icon edit">Edit</a>
+    <a href="{% url 'my_restaurant_update_desk' desk_id=record.pk %}" class="tbl_icon edit">Edit</a>
+    <a href="{% url 'my_restaurant_up_desk' desk_id=record.pk %}" class="tbl_icon edit">Up</a>
+    <a href="{% url 'my_restaurant_down_desk' desk_id=record.pk %}" class="tbl_icon edit">Down</a>
     <a href="{% url 'my_restaurant_remove_desk' desk_id=record.pk %}" class="tbl_icon delete">Delete</a>
 '''
 
@@ -21,7 +23,7 @@ class desk_table(tables.Table):
     desk_person_count = tables.Column(verbose_name="Person Count")
     desk_description = tables.Column(verbose_name="Description")
     # edit column
-    operation = tables.TemplateColumn(TEMPLATE)
+    operations = tables.TemplateColumn(TEMPLATE)
 
     def __init__(self,  *args,  **kwargs):
         super(desk_table,  self).__init__(*args,  **kwargs)

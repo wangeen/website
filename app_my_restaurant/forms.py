@@ -1,4 +1,5 @@
 from django import forms
+from django.forms.widgets import HiddenInput
 
 class restaurant_name_form(forms.Form):
     restaurant_name = forms.CharField(max_length=100,
@@ -12,6 +13,9 @@ class restaurant_name_form(forms.Form):
     pass
 
 class restaurant_add_desk_form(forms.Form):
+    # for update operation, add operation useless
+    desk_id = forms.IntegerField(widget=HiddenInput(),required =False)
+
     desk_name = forms.CharField(max_length=100,
                                       widget=forms.TextInput(attrs={'placeholder': 'Desk Name',
                                                                     'class': 'form-control'

@@ -7,6 +7,9 @@ from app_my_restaurant.views import my_restaurant_desk
 from app_my_restaurant.views import my_restaurant_update_name
 from app_my_restaurant.views import my_restaurant_add_desk
 from app_my_restaurant.views import my_restaurant_remove_desk
+from app_my_restaurant.views import my_restaurant_update_desk
+from app_my_restaurant.views import my_restaurant_up_desk
+from app_my_restaurant.views import my_restaurant_down_desk
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -36,6 +39,9 @@ urlpatterns = patterns('',
     url(r'^my_restaurant/info/name_update$', my_restaurant_update_name, name="my_restaurant_update_name"),
     url(r'^my_restaurant/desk/add_desk$', my_restaurant_add_desk, name="my_restaurant_add_desk"),
     url(r'^my_restaurant/desk/remove/(?P<desk_id>\d+)$', my_restaurant_remove_desk, name="my_restaurant_remove_desk"),
+    url(r'^my_restaurant/desk/update/(?P<desk_id>\d+)$', my_restaurant_update_desk, name="my_restaurant_update_desk"),
+    url(r'^my_restaurant/desk/up/(?P<desk_id>\d+)$', my_restaurant_up_desk, name="my_restaurant_up_desk"),
+    url(r'^my_restaurant/desk/down/(?P<desk_id>\d+)$', my_restaurant_down_desk, name="my_restaurant_down_desk"),
 
     (r'^resetpassword/passwordsent/$','django.contrib.auth.views.password_reset_done'),
     (r'^resetpassword/$','django.contrib.auth.views.password_reset'),

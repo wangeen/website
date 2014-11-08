@@ -22,6 +22,24 @@ class my_restaurant_desk_model(models.Model):
     desk_name = models.CharField(unique=True, max_length=100, default="")
     desk_person_count = models.PositiveIntegerField(default="2")
     desk_description = models.CharField(max_length=100, default="")
+
+    sort_id = models.IntegerField()
+
+    @classmethod
+    def my_insert(cls):
+        pass
+
+    @classmethod
+    def my_remove(cls):
+        pass
+
+    @classmethod
+    def my_up(cls):
+        pass
+
+    @classmethod
+    def my_down(cls):
+        pass
     pass
 
 

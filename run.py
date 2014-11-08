@@ -3,12 +3,24 @@ import subprocess
 import argparse
 
 
+class A:
+    member = 123
+    def __init__(self):
+        pass
+    pass
+
+
 def script(cmd):
     print cmd
     subprocess.call(cmd, shell=True)
 
 
 if __name__  == "__main__":
+    a = A()
+    A.member = 111
+    print a.member
+    b =A()
+    print b.member
     script("python manage.py runserver")
 
 

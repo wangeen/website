@@ -54,9 +54,11 @@
             <h3 class="panel-title">Restaurant Desk</h3>
         </div>
         <div class="panel-body">
-            <button type="button" class="btn btn-primary" data-toggle="modal"
-                data-target="#myModal" id="show_desk_editor">Add New Desk</button>
+            <form action="{% url 'my_restaurant_add_desk'%}">
+                <button type="submit" class="btn btn-primary">Add New Desk</button>
+            </form>
             {% comment %}
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="show_desk_editor">Add New Desk</button>
             <!--
             <!-- restaurant desk add form -->
             {% if return_status|is_false %}
