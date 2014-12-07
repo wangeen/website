@@ -17,7 +17,14 @@ if __name__  == "__main__":
     if args.develop_server:
         script("python manage.py runserver")
     elif args.uwsgi_server:
-        script("uwsgi --http :8000 --chdir /root/website --module django_wsgi")
+        #script("uwsgi --socket=/tmp/pyapp.socket --chdir /home/jwang/website --module django_wsgi --chmod-socket=666")
+        # sample sudo uwsgi -b 25000 --chdir=/www/python/apps/pyapp --module=wsgi:application --env DJANGO_SETTINGS_MODULE=settings --socket=/tmp/pyapp.socket --cheaper=8 --processes=16  --harakiri=10  --max-requests=5000  --vacuum --master --pidfile=/tmp/pyapp-master.pid --uid=220 --gid=499
+        # http://stackoverflow.com/questions/14962289/bad-django-uwsgi-performance
+        script("sudo uwsgi --daemonize /home/jwang/website_logs/uwsgi.log "
+                      " --socket=/tmp/pyapp.socket "
+                      " --chdir /home/jwang/website "
+                      " --module django_wsgi "
+                      " --chmod-socket=666")
     else:
         parser.print_help()
 
