@@ -6,8 +6,6 @@ from app_my_restaurant.models import my_restaurant_desk_model
 
 TEMPLATE = '''
     <a href="{% url 'my_restaurant_update_desk' desk_id=record.pk %}" class="tbl_icon edit">Edit</a>
-    <a href="{% url 'my_restaurant_up_desk' desk_id=record.pk %}" class="tbl_icon edit">Up</a>
-    <a href="{% url 'my_restaurant_down_desk' desk_id=record.pk %}" class="tbl_icon edit">Down</a>
     <a href="{% url 'my_restaurant_remove_desk' desk_id=record.pk %}" class="tbl_icon delete">Delete</a>
 '''
 

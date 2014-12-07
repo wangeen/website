@@ -15,6 +15,8 @@ from app_my_restaurant.tables import desk_table
 from django.forms.util import ErrorList
 from django.db import connection
 
+FOOD_PER_PAGE = 25
+
 class my_restaurant_home(View):
     def get(self, request):
         if request.user.is_authenticated() is False:
@@ -144,7 +146,7 @@ def my_restaurant_desk(request,form=restaurant_add_desk_form(initial={"desk_id":
     my_query = my_restaurant_desk_model.objects.filter(user=request.user)
     #print 'sql', my_query.query
     table = desk_table(my_query)
-    RequestConfig(request, paginate={"per_page": 5}).configure(table)
+    RequestConfig(request, paginate={"per_page": FOOD_PER_PAGE}).configure(table)
     return render(request,
                   "my_restaurant/my_restaurant_edit_desk.html",
                   {
